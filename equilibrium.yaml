@@ -1,0 +1,16 @@
+http:
+  servers:
+    - listen: 8080
+      serverNames:
+        - localhost
+        - ""
+      locations: 
+        - matcher: /
+          proxyPass: https://$httpbin
+
+  upstreams:
+    - name: httpbin
+      servers:
+        - host: httpbin.org
+          port: 443
+          weight: 5
