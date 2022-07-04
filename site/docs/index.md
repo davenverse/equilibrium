@@ -3,7 +3,7 @@ layout: home
 
 ---
 
-# equilibrium - erver Software Ready to Go [![Build Status](https://travis-ci.com/ChristopherDavenport/equilibrium.svg?branch=master)](https://travis-ci.com/ChristopherDavenport/equilibrium) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.chrisdavenport/equilibrium_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.chrisdavenport/equilibrium_2.12)
+# equilibrium - Http4s Reverse Proxy [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.chrisdavenport/equilibrium_2.12/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.chrisdavenport/equilibrium_2.12)
 
 ## Quick Start
 
