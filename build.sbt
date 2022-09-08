@@ -57,6 +57,9 @@ lazy val core = crossProject(JVMPlatform, JSPlatform)
 
     )
   )
+  .jsSettings(
+    scalaJSLinkerConfig ~= (_.withModuleKind(ModuleKind.CommonJSModule))
+  )
 
 lazy val app = crossProject(JVMPlatform, JSPlatform)
   .crossType(CrossType.Pure)
