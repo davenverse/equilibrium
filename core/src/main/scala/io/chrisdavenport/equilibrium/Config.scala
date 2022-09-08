@@ -4,7 +4,7 @@ import cats.effect.kernel._
 import cats.syntax.all._
 import com.comcast.ip4s._
 import io.circe._
-import io.circe.yaml.parser
+import io.circe.scalayaml.parser
 import cats.data.NonEmptyList
 
 object Config {
