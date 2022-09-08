@@ -29,41 +29,51 @@ val munitCatsEffectV = "1.0.7"
 
 // Projects
 lazy val `equilibrium` = tlCrossRootProject
-  .aggregate(core)
+  .aggregate(core, app)
 
-lazy val core = project
+lazy val core = crossProject(JVMPlatform, JSPlatform)
+  .crossType(CrossType.Pure)
   .in(file("core"))
   .settings(
     name := "equilibrium-core",
 
     libraryDependencies ++= Seq(
-      "org.typelevel"               %% "cats-core"                  % catsV,
-      "org.typelevel"               %% "cats-effect"                % catsEffectV,
+      "org.typelevel"               %%% "cats-core"                  % catsV,
+      "org.typelevel"               %%% "cats-effect"                % catsEffectV,
 
-      "co.fs2"                      %% "fs2-core"                   % fs2V,
-      "co.fs2"                      %% "fs2-io"                     % fs2V,
+      "co.fs2"                      %%% "fs2-core"                   % fs2V,
+      "co.fs2"                      %%% "fs2-io"                     % fs2V,
 
-      "org.http4s"                  %% "http4s-ember-server"        % http4sV,
-      "org.http4s"                  %% "http4s-ember-client"        % http4sV,
-      "org.http4s"                  %% "http4s-circe"               % http4sV,
+      "org.http4s"                  %%% "http4s-ember-server"        % http4sV,
+      "org.http4s"                  %%% "http4s-ember-client"        % http4sV,
+      "org.http4s"                  %%% "http4s-circe"               % http4sV,
 
-      "io.circe"                    %% "circe-core"                 % circeV,
-      "io.circe"                    %% "circe-generic"              % circeV,
-      "io.circe"                    %% "circe-parser"               % circeV,
-      "io.circe"                    %% "circe-yaml"                 % "0.14.1",
+      "io.circe"                    %%% "circe-core"                 % circeV,
+      "io.circe"                    %%% "circe-generic"              % circeV,
+      "io.circe"                    %%% "circe-parser"               % circeV,
+      "com.armanbilge"              %%% "circe-scala-yaml"           % "0.0.2",
 
-      "org.typelevel"               %% "munit-cats-effect-3"        % munitCatsEffectV         % Test,
+      "org.typelevel"               %%% "munit-cats-effect-3"        % munitCatsEffectV         % Test,
 
     )
   )
+  .jsSettings(
+    scalaJSLinkerConfig ~= (_.withModuleKind(ModuleKind.CommonJSModule))
+  )
 
-lazy val app = project
+lazy val app = crossProject(JVMPlatform, JSPlatform)
+  .crossType(CrossType.Pure)
   .in(file("equilibrium"))
   .enablePlugins(NoPublishPlugin)
   .settings(
     name := "equilibrium"
-  ).dependsOn(core)
+  )
+  .jsSettings(
+    Compile / scalaJSUseMainModuleInitializer := true,
+    scalaJSLinkerConfig ~= (_.withModuleKind(ModuleKind.CommonJSModule))
+  )
+  .dependsOn(core)
 
 lazy val site = project.in(file("site"))
   .enablePlugins(TypelevelSitePlugin)
-  .dependsOn(core)
+  .dependsOn(core.jvm)
