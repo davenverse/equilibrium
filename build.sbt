@@ -50,7 +50,7 @@ lazy val core = project
       "io.circe"                    %% "circe-core"                 % circeV,
       "io.circe"                    %% "circe-generic"              % circeV,
       "io.circe"                    %% "circe-parser"               % circeV,
-      "io.circe"                    %% "circe-yaml"                 % "0.14.1",
+      "io.circe"                    %% "circe-yaml"                 % "0.14.2",
 
       "org.typelevel"               %% "munit-cats-effect-3"        % munitCatsEffectV         % Test,
 
