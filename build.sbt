@@ -12,7 +12,7 @@ ThisBuild / tlSonatypeUseLegacyHost := true
 
 val Scala213 = "2.13.7"
 
-ThisBuild / crossScalaVersions := Seq(Scala213, "3.1.3")
+ThisBuild / crossScalaVersions := Seq(Scala213, "3.3.0")
 ThisBuild / scalaVersion := Scala213
 
 ThisBuild / testFrameworks += new TestFramework("munit.Framework")
