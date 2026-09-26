@@ -16,13 +16,13 @@ ThisBuild / scalaVersion := Scala213
 
 ThisBuild / testFrameworks += new TestFramework("munit.Framework")
 
-val catsV = "2.7.0"
-val catsEffectV = "3.3.12"
-val fs2V = "3.2.9"
-val http4sV = "0.23.11"
+val catsV = "2.13.0"
+val catsEffectV = "3.7.1"
+val fs2V = "3.14.0"
+val http4sV = "0.23.37"
 val circeV = "0.14.2"
 val doobieV = "1.0.0-RC2"
-val munitCatsEffectV = "1.0.7"
+val munitCatsEffectV = "2.2.1"
 
 
 
@@ -51,7 +51,7 @@ lazy val core = project
       "io.circe"                    %% "circe-parser"               % circeV,
       "io.circe"                    %% "circe-yaml"                 % "0.14.1",
 
-      "org.typelevel"               %% "munit-cats-effect-3"        % munitCatsEffectV         % Test,
+      "org.typelevel"               %% "munit-cats-effect"        % munitCatsEffectV         % Test,
 
     )
   )
